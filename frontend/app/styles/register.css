@@ -1,0 +1,45 @@
+/* .container{
+    background-color: #ddd;
+} */
+.overlay{
+    background-color: #ddd;
+    padding: 20px;
+    border-radius: 20px;
+    width: 60%;
+    margin : 20px auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.field{
+    width:60%;
+}
+
+.field_location{
+    display: flex;
+    justify-content: space-between;
+}
+.field input{
+    padding: 10px;
+    width: 100%;
+}
+.location_text{
+    margin-bottom: 0;
+}
+.req_text{
+    color: red;
+}
+.btn{
+    display: flex;
+    justify-content: space-between;
+    width: 60%;
+    margin: 0 auto;
+    align-items: center;
+}
+.btn_login{
+    display: flex;
+    align-items: center;
+}
+.btn_login p{
+    margin-right: 5px;
+}
