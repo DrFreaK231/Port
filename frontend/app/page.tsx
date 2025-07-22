@@ -89,7 +89,9 @@ export default function Page() {
             }
         }
         fetchItems();
-        registerUser();
+        if (session?.user) {
+            registerUser();
+        }
     }, [status, session]);
     async function signout() {
         localStorage.removeItem("user");
@@ -104,12 +106,16 @@ export default function Page() {
 
 
     async function AddCart() {
+        const password = localStorage.getItem("password")
+        let passwordLocal = null
+        if (password !== null) {
+            passwordLocal = JSON.parse(password)
+        }
         const userToSend = {
             identifier: session?.user?.name ? session.user.name : user?.username,
-            password: session?.user?.name ? "oauthuser" : localStorage.getItem("password"),
+            password: session?.user?.name ? "oauthuser" : passwordLocal,
         };
-        console.log(userToSend);
-        
+
         try {
             const response = await fetch("http://localhost:8081/users/login", {
                 method: "POST",
@@ -119,8 +125,6 @@ export default function Page() {
                 body: JSON.stringify(userToSend)
             })
             const data = await response.json();
-            console.log(data);
-            
             const orderCart = {
                 "userId": data.id,
                 "items": cart,
@@ -140,7 +144,6 @@ export default function Page() {
         } catch (error) {
             console.error("Error:", error);
         }
-
     }
 
     return (
