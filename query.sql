@@ -1,4 +1,6 @@
 CREATE DATABASE [Test]
+GO
+	
 USE [Test]
 GO
 /****** Object:  Table [dbo].[items]    Script Date: 7/21/2025 6:46:58 AM ******/
